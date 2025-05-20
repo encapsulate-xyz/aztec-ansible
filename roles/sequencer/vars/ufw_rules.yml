@@ -11,3 +11,9 @@ sequencer_ufw_rules:
     rule: allow
     from: any
     comment: p2p
+
+  - port: "{{ aztec.sequencer.ports.service }}"
+    proto: tcp
+    rule: allow
+    from: any
+    comment: service
