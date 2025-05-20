@@ -25,4 +25,3 @@ aztec:
     ports:
       p2p: 40400
       service: 8080
-      admin: 8880
