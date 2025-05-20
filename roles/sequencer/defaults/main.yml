@@ -1,0 +1,33 @@
+---
+# maintains directories and paths
+sequencer_home_dir: /opt/{{ service_identifier }}
+
+sequencer_bin_dir: "{{ sequencer_home_dir }}/bin"
+sequencer_data_dir: "{{ sequencer_home_dir }}/data"
+sequencer_env_dir: "{{ sequencer_home_dir }}/environment"
+sequencer_log_dir: "{{ sequencer_home_dir }}/log"
+sequencer_key_dir: "{{ sequencer_home_dir }}/key"
+
+sequencer_bb_dir: "{{ sequencer_bin_dir }}/bb"
+sequencer_acvm_dir: "{{ sequencer_bin_dir }}/acvm"
+
+sequencer_directories:
+  - "{{ sequencer_home_dir }}"
+  - "{{ sequencer_bin_dir }}"
+  - "{{ sequencer_env_dir }}"
+  - "{{ sequencer_data_dir }}"
+  - "{{ sequencer_key_dir }}"
+  - "{{ sequencer_log_dir }}"
+  - "{{ sequencer_bb_dir }}"
+  - "{{ sequencer_acvm_dir }}"
+
+sequencer_log_file_path: "{{ sequencer_log_dir }}/{{ service_identifier }}.log"
+
+sequencer_p2p_private_key_path: "{{ sequencer_key_dir }}/{{ sequencer_p2p_private_key_name }}"
+
+sequencer_environment_secrets_file_path: "{{ sequencer_env_dir }}/{{ sequencer_environment_secrets_file_name }}"
+sequencer_environment_general_file_path: "{{ sequencer_env_dir }}/{{ sequencer_environment_general_file_name }}"
+
+sequencer_nodejs_dir: "{{ nvm.path }}/versions/node/{{ vars[project][type].node.version }}/bin"
+sequencer_bb_binary_path: "{{ sequencer_bin_dir }}/barretenberg/cpp/build/bin/bb"
+sequencer_acvm_binary_path: "{{ sequencer_bin_dir }}/noir/noir-repo/target/release/acvm"

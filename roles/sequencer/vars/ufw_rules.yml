@@ -1,0 +1,13 @@
+---
+sequencer_ufw_rules:
+  - port: "{{ aztec.sequencer.ports.p2p }}"
+    proto: tcp
+    rule: allow
+    from: any
+    comment: p2p
+
+  - port: "{{ aztec.sequencer.ports.p2p }}"
+    proto: udp
+    rule: allow
+    from: any
+    comment: p2p
