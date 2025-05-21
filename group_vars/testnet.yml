@@ -5,3 +5,4 @@ aztec:
     version: alpha-testnet
     node:
       version: v18.20.5
+    metrics_endpoint: "http://{{ monitor_server_dns }}:4321/v1/metrics"
