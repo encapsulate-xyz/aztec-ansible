@@ -23,5 +23,5 @@ aztec:
   sequencer:
     source_url: aztecprotocol/aztec
     ports:
-      p2p: 40400
-      service: 8080
+      p2p_port: 40400
+      service_port: 8080
