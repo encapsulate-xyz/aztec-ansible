@@ -24,4 +24,4 @@ aztec:
     source_url: aztecprotocol/aztec
     ports:
       p2p_port: 40400
-      service_port: 8080
+      service_port: 8098
