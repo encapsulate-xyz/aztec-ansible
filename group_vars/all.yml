@@ -20,7 +20,7 @@ nvm:
   path: /opt/nvm
 
 aztec:
-  sequencer:
+  validator:
     source_url: aztecprotocol/aztec
     ports:
       p2p_port: 40400
