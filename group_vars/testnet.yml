@@ -1,7 +1,7 @@
 ---
 # maintains versions and can overwrite all.yml
 aztec:
-  sequencer:
+  validator:
     version: alpha-testnet
     node:
       version: v18.20.5
