@@ -1,0 +1,55 @@
+---
+- name: Include the specific network's vars file
+  ansible.builtin.include_vars:
+    file: vars/ufw_rules.yml
+
+- name: Apply UFW rules for each node type
+  ansible.builtin.include_tasks: tasks/apply_ufw_rules.yml
+  loop: "{{ sequencer_ufw_rules }}"
+
+- name: Include user creation task
+  ansible.builtin.include_tasks: tasks/create_user_and_directories.yml
+  vars:
+    home: "{{ sequencer_home_dir }}"
+    directories: "{{ sequencer_directories }}"
+    log_file_path: "{{ sequencer_log_file_path }}"
+
+- name: Include extract_node_modules task
+  ansible.builtin.include_tasks: extract_node_modules.yml
+
+- name: Copy sequencer general env file
+  ansible.builtin.template:
+    src: "{{ env }}/general.env.j2"
+    dest: "{{ sequencer_environment_general_file_path }}"
+    owner: "{{ service_identifier }}"
+    group: "{{ service_identifier }}"
+    mode: "0644"
+  notify:
+    - Restart service
+
+- name: Fetch secrets from HCP Vault and save to files
+  block:
+    - name: Fetch p2p private key and save
+      ansible.builtin.include_tasks: tasks/get_and_save_vault_secret.yml
+      vars:
+        vault_secret_source_path: "{{ project }}/{{ org }}/{{ type }}/{{ sequencer_p2p_private_key_name }}"
+        secret_destination_path: "{{ sequencer_p2p_private_key_path }}"
+        secret_type: key
+
+    - name: Fetch secret environment file and save
+      ansible.builtin.include_tasks: tasks/get_and_save_vault_secret.yml
+      vars:
+        vault_secret_source_path: "{{ project }}/{{ org }}/{{ type }}/{{ sequencer_environment_secrets_file_name }}"
+        secret_destination_path: "{{ sequencer_environment_secrets_file_path }}"
+        secret_type: environment
+
+- name: Copy systemd service file
+  ansible.builtin.template:
+    src: "{{ env }}/systemd.service.j2"
+    dest: /etc/systemd/system/{{ service_identifier }}.service
+    owner: root
+    group: root
+    mode: "0644"
+  notify:
+    - Reload service
+    - Restart service

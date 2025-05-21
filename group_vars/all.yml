@@ -16,25 +16,12 @@ default_node_types:
 
 tmp_dir: /tmp
 
-go:
-  root: /usr/local/go
-  path: "{{ tmp_dir }}/go"
-  module111: "on"
+nvm:
+  path: /opt/nvm
 
-sui:
-  validator:
-    source_url: https://releases.sui.io
+aztec:
+  sequencer:
+    source_url: aztecprotocol/aztec
     ports:
-      server_listen_port: 9191
-      metrics_port: 9186
-  fullnode:
-    version: 88888888888
-    source_url: https://releases.sui.io
-    ports:
-      server_listen_port: 9191
-      metrics_port: 9186
-  bridge:
-    source_url: https://releases.sui.io
-    ports:
-      server_listen_port: 9191
-      metrics_port: 9186
+      p2p_port: 40400
+      service_port: 8080

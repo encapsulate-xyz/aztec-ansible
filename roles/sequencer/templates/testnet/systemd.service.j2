@@ -1,0 +1,20 @@
+[Unit]
+Description=Aztec Sequencer Node
+
+[Service]
+User={{ service_identifier }}
+Group={{ service_identifier }}
+WorkingDirectory={{ sequencer_home_dir }}
+EnvironmentFile={{ sequencer_environment_secrets_file_path }}
+EnvironmentFile={{ sequencer_environment_general_file_path }}
+ExecStart={{ sequencer_nodejs_dir }}/node --no-warnings {{ sequencer_bin_dir }}/yarn-project/aztec/dest/bin/index.js \
+    start --node --archiver --sequencer --network alpha-testnet
+Restart=always
+RestartSec=4
+LimitNOFILE=65536
+MemoryMax=64G
+StandardOutput=append:{{ sequencer_log_file_path }}
+StandardError=inherit
+
+[Install]
+WantedBy=multi-user.target
