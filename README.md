@@ -32,6 +32,9 @@ The playbook dynamically retrieves private keys and environment secrets from Has
 For example:
 `testnet/aztec/encapsulate/sequencer/p2p-private-key`
 
+Example secret environment file:
+[`testnet/aztec/encapsulate/validator/aztec.secrets.env`](roles/sequencer/templates/testnet/secrets.env.example)
+
 This structure ensures easy organization and secure retrieval of secrets.
 
 ## Setup
