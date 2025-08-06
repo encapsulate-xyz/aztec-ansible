@@ -2,7 +2,7 @@
 # maintains versions and can overwrite all.yml
 aztec:
   validator:
-    version: 1.2.0
+    version: 1.2.1
     node:
       version: v18.20.5
     metrics_endpoint: "http://{{ monitor_server_dns }}:4321/v1/metrics"
