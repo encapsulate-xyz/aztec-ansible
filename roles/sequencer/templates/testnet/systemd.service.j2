@@ -8,7 +8,7 @@ WorkingDirectory={{ sequencer_home_dir }}
 EnvironmentFile={{ sequencer_environment_secrets_file_path }}
 EnvironmentFile={{ sequencer_environment_general_file_path }}
 ExecStart={{ sequencer_nodejs_dir }}/node --no-warnings {{ sequencer_bin_dir }}/yarn-project/aztec/dest/bin/index.js \
-    start --node --archiver --sequencer --network alpha-testnet
+    start --node --archiver --sequencer --network testnet
 Restart=always
 RestartSec=4
 LimitNOFILE=65536
