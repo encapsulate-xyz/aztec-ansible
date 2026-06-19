@@ -29,5 +29,5 @@ sequencer_environment_secrets_file_path: "{{ sequencer_env_dir }}/{{ sequencer_e
 sequencer_environment_general_file_path: "{{ sequencer_env_dir }}/{{ sequencer_environment_general_file_name }}"
 
 sequencer_nodejs_dir: "{{ nvm.path }}/versions/node/{{ vars[project][type].node.version }}/bin"
-sequencer_bb_binary_path: "{{ sequencer_bin_dir }}/barretenberg/cpp/build/bin/bb"
+sequencer_bb_binary_path: "{{ sequencer_bin_dir }}/barretenberg/cpp/build/bin/bb-avm"
 sequencer_acvm_binary_path: "{{ sequencer_bin_dir }}/noir/noir-repo/target/release/acvm"

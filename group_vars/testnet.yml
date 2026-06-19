@@ -4,5 +4,5 @@ aztec:
   validator:
     version: 5.0.0-rc.1
     node:
-      version: v22.19.0
+      version: v24.17.0
     metrics_endpoint: "http://{{ monitor_server_dns }}:4321/v1/metrics"
