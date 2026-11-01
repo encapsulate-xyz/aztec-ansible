@@ -1,0 +1,3 @@
+# This file contains ignores rule violations for ansible-lint
+roles/sequencer/tasks/extract_node_modules.yml var-naming[no-role-prefix]
+roles/sequencer/tasks/extract_node_modules.yml yaml[trailing-spaces]
