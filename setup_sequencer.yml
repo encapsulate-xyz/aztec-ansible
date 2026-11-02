@@ -30,3 +30,16 @@
         - name: Include sequencer role
           ansible.builtin.include_role:
             name: sequencer
+            public: true
+
+  post_tasks:
+    - name: Verify sequencer
+      when: type in allowed_node_types
+      block:
+        # The image's package.json files say 0.1.0, so aztec --version prints "dev"; its release manifest has the version.
+        # No health check: the node opens its ports only after it has synced from L1.
+        - name: Include verify service task
+          ansible.builtin.include_tasks: tasks/verify_service.yml
+          vars:
+            log_file_path: "{{ sequencer_log_file_path }}"
+            version_command: cat {{ sequencer_bin_dir }}/.release-please-manifest.json
